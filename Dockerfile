@@ -1,5 +1,5 @@
 FROM centos
-RUN bash ku
+RUN bash /root/slave1/ku
 COPY client.key /mnt
 COPY client.crt /mnt
 COPY ca.crt /mnt
