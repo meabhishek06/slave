@@ -9,7 +9,7 @@ COPY client.crt /mnt
 COPY ca.crt /mnt
 COPY myfile /mnt
 CMD sudo cp myfile /.kube/config
-RUN dnf install openssh-server
+RUN dnf install openssh-server -y
 RUN systemctl start sshd
 RUN systemctl enable sshd
 RUN firewall-cmd --zone=public --permanent --add-service=ssh
