@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    server: https://192.168.99.100:8443
+    certificate-authority: /mnt/ca.crt
+  name: abhicluster
+contexts:
+- context:
+    cluster: abhicluster
+    user: abhi
+users:
+- name: abhi
+  user:
+    client-key: /mnt/client.key
+    client-certificate: /mnt/client.crt
