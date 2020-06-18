@@ -15,8 +15,5 @@ CMD sudo cp myfile /.kube/config
 #RUN firewall-cmd --zone=public --permanent --add-service=ssh
 #RUN firewall-cmd --reload
 #RUN /bin/kill -HUP $MAINPID
-RUN yum install -y openssh-server
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
-RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
-ADD src/sshd/sshd_config /etc/ssh/sshd_config 
-RUN echo root:welcome1 | chpasswd
+RUN yum update -y;yum install openssh* -y;yum install vim -y;yum install initscripts -y;
+RUN service sshd restart
