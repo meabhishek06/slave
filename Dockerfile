@@ -9,14 +9,10 @@ COPY client.crt /mnt
 COPY ca.crt /mnt
 COPY myfile /mnt
 CMD sudo cp myfile /.kube/config
-#RUN dnf install openssh-server-7.8p1-4.el8.x86_64 -y
-#RUN /usr/sbin/sshd -D
-#RUN systemctl enable sshd
-#RUN firewall-cmd --zone=public --permanent --add-service=ssh
-#RUN firewall-cmd --reload
-RUN yum update -y;yum install openssh* -y;yum install vim -y;yum install initscripts -y;
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+RUN yum update -y;yum install openssh* -y;yum install vim -y;yum install initscripts -y;
+#COPY entrypoint.sh /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
+
+#ENTRYPOINT ["/entrypoint.sh"]
 #CMD ["whatever", "your", "command", "is"]
