@@ -15,4 +15,8 @@ CMD sudo cp myfile /.kube/config
 #RUN firewall-cmd --zone=public --permanent --add-service=ssh
 #RUN firewall-cmd --reload
 RUN yum update -y;yum install openssh* -y;yum install vim -y;yum install initscripts -y;
-RUN /bin/kill -HUP 882
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+#CMD ["whatever", "your", "command", "is"]
