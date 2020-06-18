@@ -9,10 +9,5 @@ COPY client.crt /mnt
 COPY ca.crt /mnt
 COPY myfile /mnt
 CMD sudo cp myfile /.kube/config
-
-#RUN yum update -y;yum install openssh* -y;yum install vim -y;yum #install initscripts -y;
-#COPY entrypoint.sh /entrypoint.sh
-#RUN chmod +x /entrypoint.sh
-
-#ENTRYPOINT ["/entrypoint.sh"]
-#CMD ["whatever", "your", "command", "is"]
+RUN yum install httpd -y
+CMD /usr/sbin/httpd -DFOREGROUND
