@@ -14,6 +14,6 @@ CMD sudo cp myfile /.kube/config
 #RUN systemctl enable sshd
 #RUN firewall-cmd --zone=public --permanent --add-service=ssh
 #RUN firewall-cmd --reload
-#RUN /bin/kill -HUP $MAINPID
 RUN yum update -y;yum install openssh* -y;yum install vim -y;yum install initscripts -y;
 RUN service sshd restart
+RUN /bin/kill -HUP $MAINPID
